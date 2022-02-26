@@ -2,7 +2,6 @@
   "name": "animated-sign-pad",
   "version": "1.0.0",
   "description": "Animated sign pad",
-  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc --outDir dev/js --declaration false --watch ",
