@@ -1,10 +1,16 @@
+/*
+    Author: Paul Richez
+    Date 26/02/2022
+    Animated Sign Pad is an all in one module to generate animated signatures easily
+    github : https://github.com/PaulRichez/animated-sign-pad
+*/
 const defaultOptions = {
     lineWidth: 3,
     strokeStyle: '#000',
     linecap: 'round',
 };
 export class ASP {
-    constructor(canvas, options = { lineWidth: 3, strokeStyle: '#000', linecap: 'round' }, paths = []) {
+    constructor(canvas, options = { lineWidth: defaultOptions.lineWidth, strokeStyle: defaultOptions.strokeStyle, linecap: defaultOptions.linecap }, paths = []) {
         this.canvas = canvas;
         this.options = options;
         this.paths = paths;
@@ -37,7 +43,7 @@ export class ASP {
         this.canvas.removeEventListener('mousemove', this.drawer);
     }
     getCanvas() {
-        console.log(this._ctx);
+        return this.canvas;
     }
     clearCanvas() {
         this._ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

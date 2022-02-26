@@ -27,10 +27,10 @@ export declare class ASP {
     private removeEvent;
     getCanvas(): any;
     clearCanvas(): void;
-    start(event: MouseEvent): void;
-    setMouseCoord(event: MouseEvent): void;
-    stop(): void;
-    draw(event: MouseEvent): void;
+    private start;
+    private setMouseCoord;
+    private stop;
+    private draw;
     getSvg(animation?: boolean): SVGSVGElement;
     exportData(): {
         options: IOptions;
