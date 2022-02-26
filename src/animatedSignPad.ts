@@ -67,7 +67,7 @@ export class ASP {
     }
 
     getCanvas(): any {
-       return this.canvas;
+        return this.canvas;
     }
 
     clearCanvas(): void {
@@ -75,7 +75,7 @@ export class ASP {
         this.paths = [];
     }
 
-    start(event: MouseEvent) {
+    private start(event: MouseEvent) {
         this.setMouseCoord(event);
         this.paths.push(
             {
@@ -86,17 +86,17 @@ export class ASP {
         this.initEvent();
     }
 
-    setMouseCoord(event: MouseEvent) {
+    private setMouseCoord(event: MouseEvent) {
         this._mouseCoord.x = event.clientX - this.canvas.offsetLeft;
         this._mouseCoord.y = event.clientY - this.canvas.offsetTop;
     }
 
-    stop() {
+    private stop() {
         this.paths[this.paths.length - 1].end = new Date();
         this.removeEvent();
     }
 
-    draw(event: MouseEvent) {
+    private draw(event: MouseEvent) {
         this._ctx.beginPath();
         this._ctx.lineWidth = this.options.lineWidth ? this.options.lineWidth : defaultOptions.lineWidth;
         this._ctx.lineCap = this.options.linecap ? this.options.linecap : defaultOptions.linecap;
@@ -176,7 +176,7 @@ export class ASP {
         return svg;
     }
 
-    downloadSvg(fileName: string = "download.svg", animation: boolean = true) {
+    downloadSvg(fileName: string = "download.svg", animation: boolean = true) : void {
         const svg = this.generateSvg(this.canvas, this.options, this.paths, animation);
         const svgData = new XMLSerializer().serializeToString(svg);
         const blob = new Blob([svgData], { type: 'image/svg+xml' });
