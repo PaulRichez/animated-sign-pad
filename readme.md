@@ -1,11 +1,11 @@
 # Animated Sign Pad
 ## Animate your signatures easily
 
-Animated Sign Pad is an all in one module to generate animated signatures easily 
+Animated Sign Pad is an all in one module to draw and generate animated signatures easily 
 
 ## Features
 
-- Generate SVG in DOM whith or whithout animation
+- Generate SVG for DOM whith or whithout animation
 - choose multiple options like lineWidth for draw the same from the canvas to the SVG
 - Download SVG whith or whithout animation
 - Export or import a JSON for save it easily
