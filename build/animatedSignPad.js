@@ -130,3 +130,4 @@ export class ASP {
         return svg;
     }
 }
+//# sourceMappingURL=animatedSignPad.js.map

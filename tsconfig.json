@@ -3,6 +3,8 @@
     "target": "es6",
     "module": "es6",
     "declaration": true,
+    "outDir": "build",
+    "sourceMap": true,
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true

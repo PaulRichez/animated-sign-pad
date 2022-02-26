@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "tsc --outDir dev/js --watch ",
-    "build": "tsc --outDir build && npm run minify",
+    "watch": "tsc --outDir dev/js --declaration false --watch ",
+    "build": "tsc && npm run minify",
     "minify": "terser --compress --mangle --output ./build/animatedSignpad.min.js -- ./build/animatedSignPad.js"
   },
   "author": "Paul Richez",
