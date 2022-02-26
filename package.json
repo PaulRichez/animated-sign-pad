@@ -1,0 +1,20 @@
+{
+  "name": "animated-sign-pad",
+  "version": "1.0.0",
+  "description": "Animated sign pad",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc --outDir dev/js --watch ",
+    "build": "tsc --outDir build && npm run minify",
+    "minify": "terser --compress --mangle --output ./build/animatedSignpad.min.js -- ./build/animatedSignPad.js"
+  },
+  "author": "Paul Richez",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "terser": "^5.11.0"
+  }
+}
