@@ -2,11 +2,11 @@ export interface IMouseCoord {
     x: Number,
     y: Number
 }
-
+export type linecap = "butt" | "round" | "square";
 export interface IOptions {
-    lineWidth: number,
-    strokeStyle: String,
-    linecap: "butt" | "round" | "square",
+    lineWidth?: number,
+    strokeStyle?: String,
+    linecap?: linecap,
 }
 
 export interface IPaths {
@@ -15,18 +15,36 @@ export interface IPaths {
     end: Date,
 }
 
+const defaultOptions = {
+    lineWidth: 3,
+    strokeStyle: '#000',
+    linecap: 'round' as linecap,
+}
 export class ASP {
+
+
     private _ctx: any;
     private _mouseCoord: IMouseCoord = { x: 0, y: 0 };
 
     private drawer = this.draw.bind(this);
     private stoper = this.stop.bind(this);
 
-    private paths: IPaths[] = [];
-
-    constructor(public canvas: HTMLCanvasElement, public options: IOptions = { lineWidth: 3, strokeStyle: '#000', linecap: 'round' }) {
+    constructor(public canvas: HTMLCanvasElement, public options: IOptions = { lineWidth: 3, strokeStyle: '#000', linecap: 'round' as linecap }, public paths: IPaths[] = []) {
         this._ctx = canvas.getContext('2d');
+        this.setDefaults();
         this.canvas.addEventListener('mousedown', this.start.bind(this));
+    }
+
+    private setDefaults() {
+        if (this.options.lineWidth === undefined) {
+            this.options.lineWidth = defaultOptions.lineWidth;
+        }
+        if (this.options.strokeStyle === undefined) {
+            this.options.strokeStyle = defaultOptions.strokeStyle;
+        }
+        if (this.options.linecap === undefined) {
+            this.options.linecap = defaultOptions.linecap;
+        }
     }
 
     private initEvent() {
@@ -73,9 +91,9 @@ export class ASP {
 
     draw(event: MouseEvent) {
         this._ctx.beginPath();
-        this._ctx.lineWidth = this.options.lineWidth;
-        this._ctx.lineCap = 'round';
-        this._ctx.strokeStyle = this.options.strokeStyle;
+        this._ctx.lineWidth = this.options.lineWidth ? this.options.lineWidth : defaultOptions.lineWidth;
+        this._ctx.lineCap = this.options.linecap ? this.options.linecap : defaultOptions.linecap;
+        this._ctx.strokeStyle = this.options.strokeStyle ? this.options.strokeStyle : defaultOptions.strokeStyle;
         this._ctx.moveTo(this._mouseCoord.x, this._mouseCoord.y);
         this.setMouseCoord(event);
         this._ctx.lineTo(this._mouseCoord.x, this._mouseCoord.y);
@@ -85,6 +103,26 @@ export class ASP {
 
     getSvg(animation: boolean = true): SVGSVGElement {
         return this.generateSvg(this.canvas, this.options, this.paths, animation);
+    }
+
+    exportData(): { options: IOptions, paths: IPaths[] } {
+        return {
+            options: this.options,
+            paths: this.paths
+        }
+    }
+
+    importData(data: { options: IOptions, paths: IPaths[] }): void {
+        this.options = data.options;
+        this.paths = data.paths;
+        this.paths.forEach((cPath, index) => {
+            if (typeof cPath.start === 'string') {
+                this.paths[index].start = new Date(cPath.start);
+            }
+            if (typeof cPath.end === 'string') {
+                this.paths[index].end = new Date(cPath.end);
+            }
+        });
     }
 
     private generateSvg(canvas: HTMLCanvasElement, options: IOptions, paths: IPaths[], animation: boolean = false): SVGSVGElement {
@@ -103,9 +141,9 @@ export class ASP {
             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
             path.setAttribute("id", `p${index}`);
             path.setAttribute("d", cPath.pointPaths.toString());
-            path.setAttribute("stroke", options.strokeStyle.toString());
-            path.setAttribute("stroke-width", options.lineWidth.toString());
-            path.setAttribute("stroke-linecap", options.linecap.toString());
+            path.setAttribute("stroke", options.strokeStyle ? options.strokeStyle.toString() : defaultOptions.strokeStyle.toString());
+            path.setAttribute("stroke-width", options.lineWidth ? options.lineWidth.toString() : defaultOptions.lineWidth.toString());
+            path.setAttribute("stroke-linecap", options.linecap ? options.linecap.toString() : defaultOptions.linecap.toString());
             path.setAttribute("fill", "none");
             if (animation) {
                 const pathLength = parseInt(path.getTotalLength().toString()).toString();
@@ -130,6 +168,5 @@ export class ASP {
 
         return svg;
     }
-
 
 }
