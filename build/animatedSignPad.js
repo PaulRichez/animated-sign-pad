@@ -10,13 +10,13 @@ const defaultOptions = {
     linecap: 'round',
 };
 export class ASP {
-    constructor(canvas, options = { lineWidth: defaultOptions.lineWidth, strokeStyle: defaultOptions.strokeStyle, linecap: defaultOptions.linecap }, paths = []) {
+    constructor(canvas, options = { lineWidth: defaultOptions.lineWidth, strokeStyle: defaultOptions.strokeStyle, linecap: defaultOptions.linecap }) {
         this.canvas = canvas;
         this.options = options;
-        this.paths = paths;
         this._mouseCoord = { x: 0, y: 0 };
         this.drawer = this.draw.bind(this);
         this.stoper = this.stop.bind(this);
+        this.paths = [];
         this._ctx = canvas.getContext('2d');
         this.setDefaults();
         this.canvas.addEventListener('mousedown', this.start.bind(this));

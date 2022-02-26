@@ -16,12 +16,12 @@ export interface IPaths {
 export declare class ASP {
     canvas: HTMLCanvasElement;
     options: IOptions;
-    paths: IPaths[];
     private _ctx;
     private _mouseCoord;
     private drawer;
     private stoper;
-    constructor(canvas: HTMLCanvasElement, options?: IOptions, paths?: IPaths[]);
+    private paths;
+    constructor(canvas: HTMLCanvasElement, options?: IOptions);
     private setDefaults;
     private initEvent;
     private removeEvent;

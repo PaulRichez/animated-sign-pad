@@ -36,7 +36,9 @@ export class ASP {
     private drawer = this.draw.bind(this);
     private stoper = this.stop.bind(this);
 
-    constructor(public canvas: HTMLCanvasElement, public options: IOptions = { lineWidth: defaultOptions.lineWidth, strokeStyle: defaultOptions.strokeStyle, linecap: defaultOptions.linecap }, public paths: IPaths[] = []) {
+    private paths: IPaths[] = [];
+
+    constructor(public canvas: HTMLCanvasElement, public options: IOptions = { lineWidth: defaultOptions.lineWidth, strokeStyle: defaultOptions.strokeStyle, linecap: defaultOptions.linecap }) {
         this._ctx = canvas.getContext('2d');
         this.setDefaults();
         this.canvas.addEventListener('mousedown', this.start.bind(this));
