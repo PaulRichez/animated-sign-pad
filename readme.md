@@ -22,6 +22,10 @@ Animated Sign Pad is an all in one module to draw and generate animated signatur
 
 TODO Write the installation part
 
+## CDN
+
+[https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.1/build/animatedSignpad.min.js](https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.1/build/animatedSignpad.min.js)
+
 ## Usage
 
 see the [example folder](https://github.com/PaulRichez/animated-sign-pad/tree/master/examples) for a complete case.
