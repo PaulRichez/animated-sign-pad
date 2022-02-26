@@ -7,7 +7,8 @@
     "watch": "tsc --outDir dev/js --declaration false --watch ",
     "build": "tsc && npm run minify && npm run copyForExample",
     "minify": "terser --compress --mangle --output ./build/animatedSignpad.min.js -- ./build/animatedSignPad.js",
-    "copyForExample": "copyfiles ./build/animatedSignpad.min.js ./examples/animatedSignpad.min.js -f"
+    "copyForExample": "copyfiles ./build/animatedSignpad.min.js ./examples/animatedSignpad.min.js -f",
+    "CDN": "copyfiles ./build/animatedSignpad.min.js ./CDN/%npm_package_version%"
   },
   "repository": {
     "type": "git",
