@@ -5,40 +5,42 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc --outDir dev/js --declaration false --watch ",
-    "build": "tsc && npm run minify",
-    "minify": "terser --compress --mangle --output ./build/animatedSignpad.min.js -- ./build/animatedSignPad.js"
+    "build": "tsc && npm run minify && npm run copyForExample",
+    "minify": "terser --compress --mangle --output ./build/animatedSignpad.min.js -- ./build/animatedSignPad.js",
+    "copyForExample": "copyfiles ./build/animatedSignpad.min.js ./examples/animatedSignpad.min.js -f"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/PaulRichez/animated-sign-pad"
   },
   "bugs": {
-		"url": "https://github.com/PaulRichez/animated-sign-pad/issues",
-		"email": "paul.richez59@gmail.com"
-	},
+    "url": "https://github.com/PaulRichez/animated-sign-pad/issues",
+    "email": "paul.richez59@gmail.com"
+  },
   "homepage": "https://github.com/PaulRichez/animated-sign-pad",
   "author": "Paul Richez",
   "license": "ISC",
   "keywords": [
-		"sign",
-		"signature",
-		"draw",
-		"pad",
-		"svg",
-		"svg animated",
-		"svg animation",
-		"sign pad",
-		"signature pad",
+    "sign",
+    "signature",
+    "draw",
+    "pad",
+    "svg",
+    "svg animated",
+    "svg animation",
+    "sign pad",
+    "signature pad",
     "animated signature",
     "animated signature pad",
     "animated sign",
     "animated sign pad",
     "animated sign pad svg"
-	],
+  ],
   "devDependencies": {
     "typescript": "^4.5.5"
   },
   "dependencies": {
+    "copyfiles": "^2.4.1",
     "terser": "^5.11.0"
   }
 }

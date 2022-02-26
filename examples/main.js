@@ -1,4 +1,4 @@
-import { ASP } from '../build/animatedSignpad.min.js';
+import { ASP } from './animatedSignpad.min.js/animatedSignpad.min.js';
 
 const canvas = document.getElementById('canvas');
 const btnClear = document.getElementById('button-clear');
