@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0px;
+  }
+  canvas {
+    border: 1px solid black;
+  }
+
+
+  #svgPreview {
+    width: 500px;
+    height: 200px;
+  }
