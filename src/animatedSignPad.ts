@@ -169,4 +169,15 @@ export class ASP {
         return svg;
     }
 
+    downloadSvg(fileName: string = "download.svg", animation: boolean = true) {
+        const svg = this.generateSvg(this.canvas, this.options, this.paths, animation);
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const blob = new Blob([svgData], { type: 'image/svg+xml' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        link.click();
+    }
+
 }

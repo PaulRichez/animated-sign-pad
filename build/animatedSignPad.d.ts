@@ -41,4 +41,5 @@ export declare class ASP {
         paths: IPaths[];
     }): void;
     private generateSvg;
+    downloadSvg(fileName?: string, animation?: boolean): void;
 }

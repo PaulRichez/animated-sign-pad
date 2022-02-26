@@ -6,10 +6,11 @@ const btnAnimate = document.getElementById('button-animate');
 const btnNormal = document.getElementById('button-normal');
 const btnExport = document.getElementById('button-export');
 const btnImport = document.getElementById('button-import');
+const btnDonwload = document.getElementById('button-download');
 const svgPreview = document.getElementById('svgPreview');
 const textArea = document.getElementById('data');
 
-const myAsp = new ASP(canvas, { lineWidth: 6});
+const myAsp = new ASP(canvas, { lineWidth: 6 });
 
 btnClear.onclick = function () {
     console.log('btn clear');
@@ -36,4 +37,9 @@ btnImport.onclick = function () {
     console.log('btn import');
     myAsp.importData(JSON.parse(textArea.value));
     btnAnimate.click();
+}
+
+btnDonwload.onclick = function () {
+    console.log('btn donwload');
+    myAsp.downloadSvg("test.svg", true);
 }
