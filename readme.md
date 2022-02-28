@@ -5,6 +5,7 @@ Animated Sign Pad is an all in one module to draw and generate animated signatur
 
 ## Demo
 [Here](https://animated-sign-pad.vercel.app/)
+
 ![Preview](https://raw.githubusercontent.com/PaulRichez/animated-sign-pad/master/assets/images/demo.gif)
 
 ## bugs
