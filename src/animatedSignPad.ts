@@ -42,20 +42,7 @@ export class ASP {
 
     constructor(public canvas: HTMLCanvasElement, public options: IOptions = { lineWidth: defaultOptions.lineWidth, strokeStyle: defaultOptions.strokeStyle, linecap: defaultOptions.linecap, timeBetweenLineDraw: defaultOptions.timeBetweenLineDraw }) {
         this._ctx = canvas.getContext('2d');
-        this.setDefaults();
         this.canvas.addEventListener('mousedown', this.start.bind(this));
-    }
-
-    private setDefaults() {
-        if (this.options.lineWidth === undefined) {
-            this.options.lineWidth = defaultOptions.lineWidth;
-        }
-        if (this.options.strokeStyle === undefined) {
-            this.options.strokeStyle = defaultOptions.strokeStyle;
-        }
-        if (this.options.linecap === undefined) {
-            this.options.linecap = defaultOptions.linecap;
-        }
     }
 
     private initEvent() {

@@ -19,19 +19,7 @@ export class ASP {
         this.stoper = this.stop.bind(this);
         this.paths = [];
         this._ctx = canvas.getContext('2d');
-        this.setDefaults();
         this.canvas.addEventListener('mousedown', this.start.bind(this));
-    }
-    setDefaults() {
-        if (this.options.lineWidth === undefined) {
-            this.options.lineWidth = defaultOptions.lineWidth;
-        }
-        if (this.options.strokeStyle === undefined) {
-            this.options.strokeStyle = defaultOptions.strokeStyle;
-        }
-        if (this.options.linecap === undefined) {
-            this.options.linecap = defaultOptions.linecap;
-        }
     }
     initEvent() {
         this.canvas.addEventListener('mouseup', this.stoper);

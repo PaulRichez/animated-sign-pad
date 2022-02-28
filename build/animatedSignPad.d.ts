@@ -23,7 +23,6 @@ export declare class ASP {
     private stoper;
     private paths;
     constructor(canvas: HTMLCanvasElement, options?: IOptions);
-    private setDefaults;
     private initEvent;
     private removeEvent;
     getCanvas(): any;
