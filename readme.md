@@ -21,7 +21,9 @@ Animated Sign Pad is an all in one module to draw and generate animated signatur
 
 ## Installation
 
-TODO Write the installation part
+The better way is :
+Download the min file from CDN folder and import { ASP } from './animatedSignpad.min.js/animatedSignpad.min.js';
+look on examples for more details
 
 ## CDN
 
