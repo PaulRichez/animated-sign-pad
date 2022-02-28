@@ -23,8 +23,10 @@ Animated Sign Pad is an all in one module to draw and generate animated signatur
 Look at example
 
 you can change the import by
-`import { ASP } from 'https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.3/build/animatedSignpad.min.js';
-const myAsp = new ASP(canvas, {});`
+```js
+import { ASP } from 'https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.3/build/animatedSignpad.min.js';
+const myAsp = new ASP(canvas, {});
+```
 
 ## CDN
 
