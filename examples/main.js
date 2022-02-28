@@ -10,7 +10,7 @@ const btnDonwload = document.getElementById('button-download');
 const svgPreview = document.getElementById('svgPreview');
 const textArea = document.getElementById('data');
 
-const myAsp = new ASP(canvas, { lineWidth: 6 });
+const myAsp = new ASP(canvas, {});
 
 btnClear.onclick = function () {
     console.log('btn clear');

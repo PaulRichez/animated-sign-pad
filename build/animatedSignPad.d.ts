@@ -7,6 +7,7 @@ export interface IOptions {
     lineWidth?: number;
     strokeStyle?: String;
     linecap?: linecap;
+    timeBetweenLineDraw?: number;
 }
 export interface IPaths {
     pointPaths: String;

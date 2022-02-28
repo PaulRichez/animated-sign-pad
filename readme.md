@@ -8,7 +8,7 @@ Animated Sign Pad is an all in one module to draw and generate animated signatur
 [Here](https://animated-sign-pad.vercel.app/)
 
 ## bugs
- - Need path drawing effect
+ - No bugs - Full stable version
 
 ## Features
 
@@ -32,6 +32,7 @@ see the [example folder](https://github.com/PaulRichez/animated-sign-pad/tree/ma
 
 ```js
 const myAsp = new ASP(canvas, { lineWidth: 6 }); // create a new ASP with lineWidth value 6
+const myAsp2 = new ASP(canvas, { }); // create a new ASP with default options
 myAsp.clearCanvas(); // clear Canvas
 myAsp.getSvg().outerHTML; //get animated svg
 svgPreview.innerHTML = myAsp.getSvg(false).outerHTML; // get no animated svg
@@ -47,6 +48,7 @@ myAsp.downloadSvg("test.svg", true); // download svg animated with name test.svg
 | lineWidth   | Number                        | 3       | writing line width                         |
 | strokeStyle | String                        | #000    | line color                                 |
 | linecap     | "butt" or "round" or "square" | "round" | shape used to draw the end points of lines |
+| timeBetweenLineDraw     | Number | 200 | Time between 2 lines draw in ms |
 
 ## Methods
 | name | desc |

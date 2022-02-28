@@ -14,6 +14,7 @@ export interface IOptions {
     lineWidth?: number,
     strokeStyle?: String,
     linecap?: linecap,
+    timeBetweenLineDraw?: number,
 }
 
 export interface IPaths {
@@ -26,6 +27,7 @@ const defaultOptions = {
     lineWidth: 3,
     strokeStyle: '#000',
     linecap: 'round' as linecap,
+    timeBetweenLineDraw: 200,
 }
 export class ASP {
 
@@ -38,7 +40,7 @@ export class ASP {
 
     private paths: IPaths[] = [];
 
-    constructor(public canvas: HTMLCanvasElement, public options: IOptions = { lineWidth: defaultOptions.lineWidth, strokeStyle: defaultOptions.strokeStyle, linecap: defaultOptions.linecap }) {
+    constructor(public canvas: HTMLCanvasElement, public options: IOptions = { lineWidth: defaultOptions.lineWidth, strokeStyle: defaultOptions.strokeStyle, linecap: defaultOptions.linecap, timeBetweenLineDraw: defaultOptions.timeBetweenLineDraw }) {
         this._ctx = canvas.getContext('2d');
         this.setDefaults();
         this.canvas.addEventListener('mousedown', this.start.bind(this));
@@ -79,12 +81,20 @@ export class ASP {
 
     private start(event: MouseEvent) {
         this.setMouseCoord(event);
+        this._ctx.beginPath();
+        this._ctx.lineWidth = this.options.lineWidth ? this.options.lineWidth : defaultOptions.lineWidth;
+        this._ctx.lineCap = this.options.linecap ? this.options.linecap : defaultOptions.linecap;
+        this._ctx.strokeStyle = this.options.strokeStyle ? this.options.strokeStyle : defaultOptions.strokeStyle;
+        this._ctx.moveTo(this._mouseCoord.x, this._mouseCoord.y);
+        this.setMouseCoord(event);
+        this._ctx.lineTo(this._mouseCoord.x, this._mouseCoord.y);
         this.paths.push(
             {
-                pointPaths: 'M' + this._mouseCoord.x + ',' + this._mouseCoord.y + 'L' + this._mouseCoord.x + ',' + this._mouseCoord.y,
+                pointPaths: 'M' + this._mouseCoord.x + ',' + this._mouseCoord.y + 'L' + this._mouseCoord.x + ',' + this._mouseCoord.y + ' ' + (Number(this._mouseCoord.x) + Number(0.1)) + ',' + (Number(this._mouseCoord.y) + Number(0.1)),
                 start: new Date(),
                 end: new Date(),
             });
+        this._ctx.stroke();
         this.initEvent();
     }
 
@@ -155,21 +165,23 @@ export class ASP {
             path.setAttribute("stroke-linecap", options.linecap ? options.linecap.toString() : defaultOptions.linecap.toString());
             path.setAttribute("fill", "none");
             if (animation) {
-                const pathLength = parseInt(path.getTotalLength().toString()).toString();
+                const pathLength = (path.getTotalLength() + 1).toString();
                 path.setAttribute("stroke-dasharray", pathLength);
-                path.setAttribute("stroke-offset", pathLength);
+                path.setAttribute("stroke-dashoffset", pathLength);
                 newDifDate = cPath.end.getTime() - cPath.start.getTime();
 
                 // create animation element
                 const animation = document.createElementNS(svg.namespaceURI, 'animate');
                 animation.setAttribute('attributeName', 'stroke-dashoffset');
-                animation.setAttribute('begin', oldDifDate + 0.1 + 'ms');
-                animation.setAttribute('values', pathLength + ';0');
+                animation.setAttribute('begin', oldDifDate + (options.timeBetweenLineDraw ? options.timeBetweenLineDraw : defaultOptions.timeBetweenLineDraw) * index + 1 + 'ms');
+                animation.setAttribute('from', pathLength);
+                animation.setAttribute('to', '0');
                 animation.setAttribute('dur', newDifDate + 'ms');
-                animation.setAttribute('calcMode', 'freeze');
+                animation.setAttribute('calcMode', 'linear');
+                animation.setAttribute('fill', 'freeze');
                 path.appendChild(animation);
 
-                oldDifDate = newDifDate;
+                oldDifDate += newDifDate;
             }
             // add paths to the svg
             svg.appendChild(path);
@@ -178,7 +190,7 @@ export class ASP {
         return svg;
     }
 
-    downloadSvg(fileName: string = "download.svg", animation: boolean = true) : void {
+    downloadSvg(fileName: string = "download.svg", animation: boolean = true): void {
         const svg = this.generateSvg(this.canvas, this.options, this.paths, animation);
         const svgData = new XMLSerializer().serializeToString(svg);
         const blob = new Blob([svgData], { type: 'image/svg+xml' });
