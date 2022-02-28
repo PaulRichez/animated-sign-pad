@@ -26,7 +26,7 @@ TODO Write the installation part
 
 Dont use under 1.0.2 (previous version is bugged)
 
-[https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.2/build/animatedSignpad.min.js](https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.2/build/animatedSignpad.min.js)
+[https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.3/build/animatedSignpad.min.js](https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.3/build/animatedSignpad.min.js)
 
 ## Usage
 
