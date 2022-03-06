@@ -11,6 +11,10 @@ Animated Sign Pad is an all in one module to draw and generate animated signatur
 ## bugs
  - No bugs - Full stable version
 
+## Changelogs
+ - V1.0.4 => add mobile support
+ - V1.0.3 => bug fixes
+
 ## Features
 
 - Generate SVG for DOM whith or whithout animation
@@ -24,7 +28,7 @@ Look at example
 
 you can change the import by
 ```js
-import { ASP } from 'https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.3/build/animatedSignpad.min.js';
+import { ASP } from 'https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.4/build/animatedSignpad.min.js';
 const myAsp = new ASP(canvas, {});
 ```
 
@@ -32,7 +36,7 @@ const myAsp = new ASP(canvas, {});
 
 Dont use under 1.0.2 (previous version is bugged)
 
-[https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.3/build/animatedSignpad.min.js](https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.3/build/animatedSignpad.min.js)
+[https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.4/build/animatedSignpad.min.js](https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.4/build/animatedSignpad.min.js)
 
 ## Usage
 

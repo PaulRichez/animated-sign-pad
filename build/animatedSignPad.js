@@ -19,17 +19,17 @@ export class ASP {
         this.stoper = this.stop.bind(this);
         this.paths = [];
         this._ctx = canvas.getContext('2d');
-        this.canvas.addEventListener('mousedown', this.start.bind(this));
+        this.canvas.addEventListener('pointerdown', this.start.bind(this));
     }
     initEvent() {
-        this.canvas.addEventListener('mouseup', this.stoper);
-        this.canvas.addEventListener('mouseleave', this.stoper);
-        this.canvas.addEventListener('mousemove', this.drawer);
+        this.canvas.addEventListener('pointerup', this.stoper);
+        this.canvas.addEventListener('pointerleave', this.stoper);
+        this.canvas.addEventListener('pointermove', this.drawer);
     }
     removeEvent() {
-        this.canvas.removeEventListener('mouseup', this.stoper);
-        this.canvas.removeEventListener('mouseleave', this.stoper);
-        this.canvas.removeEventListener('mousemove', this.drawer);
+        this.canvas.removeEventListener('pointerup', this.stoper);
+        this.canvas.removeEventListener('pointerleave', this.stoper);
+        this.canvas.removeEventListener('pointermove', this.drawer);
     }
     getCanvas() {
         return this.canvas;
