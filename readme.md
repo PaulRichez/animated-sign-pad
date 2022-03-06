@@ -12,8 +12,9 @@ Animated Sign Pad is an all in one module to draw and generate animated signatur
  - No bugs - Full stable version
 
 ## Changelogs
- - V1.0.4 => add mobile support
- - V1.0.3 => bug fixes
+ - 1.0.4 => add mobile support
+ - 1.0.3 => export data fixed
+ - 1.0.2 => bugs fix
 
 ## Features
 
