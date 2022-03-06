@@ -42,19 +42,19 @@ export class ASP {
 
     constructor(public canvas: HTMLCanvasElement, public options: IOptions = { lineWidth: defaultOptions.lineWidth, strokeStyle: defaultOptions.strokeStyle, linecap: defaultOptions.linecap, timeBetweenLineDraw: defaultOptions.timeBetweenLineDraw }) {
         this._ctx = canvas.getContext('2d');
-        this.canvas.addEventListener('mousedown', this.start.bind(this));
+        this.canvas.addEventListener('pointerdown', this.start.bind(this));
     }
 
     private initEvent() {
-        this.canvas.addEventListener('mouseup', this.stoper);
-        this.canvas.addEventListener('mouseleave', this.stoper);
-        this.canvas.addEventListener('mousemove', this.drawer);
+        this.canvas.addEventListener('pointerup', this.stoper);
+        this.canvas.addEventListener('pointerleave', this.stoper);
+        this.canvas.addEventListener('pointermove', this.drawer);
     }
 
     private removeEvent() {
-        this.canvas.removeEventListener('mouseup', this.stoper);
-        this.canvas.removeEventListener('mouseleave', this.stoper);
-        this.canvas.removeEventListener('mousemove', this.drawer);
+        this.canvas.removeEventListener('pointerup', this.stoper);
+        this.canvas.removeEventListener('pointerleave', this.stoper);
+        this.canvas.removeEventListener('pointermove', this.drawer);
     }
 
     getCanvas(): any {
@@ -66,7 +66,7 @@ export class ASP {
         this.paths = [];
     }
 
-    private start(event: MouseEvent) {
+    private start(event: PointerEvent) {
         this.setMouseCoord(event);
         this._ctx.beginPath();
         this._ctx.lineWidth = this.options.lineWidth ? this.options.lineWidth : defaultOptions.lineWidth;
@@ -85,7 +85,7 @@ export class ASP {
         this.initEvent();
     }
 
-    private setMouseCoord(event: MouseEvent) {
+    private setMouseCoord(event: PointerEvent) {
         this._mouseCoord.x = event.clientX - this.canvas.offsetLeft;
         this._mouseCoord.y = event.clientY - this.canvas.offsetTop;
     }
@@ -95,7 +95,7 @@ export class ASP {
         this.removeEvent();
     }
 
-    private draw(event: MouseEvent) {
+    private draw(event: PointerEvent) {
         this._ctx.beginPath();
         this._ctx.lineWidth = this.options.lineWidth ? this.options.lineWidth : defaultOptions.lineWidth;
         this._ctx.lineCap = this.options.linecap ? this.options.linecap : defaultOptions.linecap;
