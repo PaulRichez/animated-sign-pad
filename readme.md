@@ -27,6 +27,8 @@ Animated Sign Pad is an all in one module to draw and generate animated signatur
 ## Installation
 Look at example
 
+You need add style="touch-action: none;" to your canvas for mobile support !!! 
+
 you can change the import by
 ```js
 import { ASP } from 'https://cdn.jsdelivr.net/gh/PaulRichez/animated-sign-pad@master/CDN/1.0.4/build/animatedSignpad.min.js';
